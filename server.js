@@ -2,6 +2,7 @@ import 'dotenv/config.js';
 import express from 'express';
 import { connectDB } from './db/db.js';
 
+import { allRoutesInfo } from './controllers/allRoutesInfo.js';
 import fetchRoutes from './routes/fetchRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 connectDB();
 
+app.use('/', allRoutesInfo); 
 app.use('/fetch-data', fetchRoutes);
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
